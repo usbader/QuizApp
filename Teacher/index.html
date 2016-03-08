@@ -1,1 +1,157 @@
-//TODO: Teacher page contain all the courses a teacher have.
+<html>
+<head>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- CSS  -->
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+
+	<!--Import stylesheet for Leaflet to work-->
+	<script src="https://cdn.firebase.com/js/client/2.3.2/firebase.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/redmond/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+</head>
+
+<style>
+	html {
+		background-color: papayawhip;
+	}
+</style>
+
+<style type="text/css">
+	div.bigDiv {
+		height: 500px;
+	}
+</style>
+
+
+<style type="text/css">
+	#slide {
+		position: relative;
+	}
+
+	#slide1 {
+		bottom: 0;
+		min-height: 80px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 2;
+	}
+</style>
+
+<body>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+	<header>
+		<nav class="nav-wrapper grey darken-3 " role="navigation" style="opacity: 0.7" id="nav-bar">
+			<div class="nav-wrapper container">
+				<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="../index.html"><i class="material-icons">reply</i></a></li>
+				</ul>
+			</div>
+		</nav>	
+		<h3 class="center">Hello Professor Elizabeth Boese!</h3>
+	</header>
+
+	<main>
+		<div class="container">
+			<div class="section">
+				<div class="row">
+        			<div class="col s12 m6">
+          				<div class="card blue-grey darken-1">
+            				<div class="card-content white-text">
+              					<span class="card-title">Object-Oriented Analysis and Design</span>
+              					<p>The best Course ever!!! 
+              						An applied analysis and design class addressing the use of object-oriented techniques. Topics include domain modeling, use cases, architectural design, and modeling notations. Students apply the techniques in analysis and design projects. Prereq., CSCI 3155 or expertise in one or more object-oriented programming languages, such as C++ or Java. Same as CSCI 5448.</p>
+            				</div>
+            				<div class="card-action">
+              					<a href="courseInfo.html">Course Website</a>
+            				</div>
+          				</div>
+        			</div>
+        			<div class="col s12 m6">
+          				<div class="card blue-grey darken-1">
+            				<div class="card-content white-text">
+              					<span class="card-title">Operating Systems.</span>
+              					<p>Examines software comprising computing systems as it builds upon hardware to provide a programming environment. Looks at structure and function of editors, compilers/assemblers, linkers, etc. Basic operating systems concepts and systems programming in high-level languages. Prereqs., CSCI 2700 and 2400 or ECEN 3350. Prerequisites: Requires pre-requisite courses of CSCI 2270</p>
+            				</div>
+            				<div class="card-action">
+              					<a href="#">This doesn't work</a>
+            				</div>
+          				</div>
+        			</div>
+        			<div class="col s12 m6">
+          				<div class="card blue-grey darken-1">
+            				<div class="card-content white-text">
+              					<span class="card-title">Computer Graphics</span>
+              					<p>Studies design, analysis, and implementation of computer graphics techniques. Topics include interactive techniques, 2D and 3D viewing, clipping, segmentation, translation, rotation, and projection. Also involves removal of hidden edges, shading, and color. Prereqs., knowledge of basic linear algebra and CSCI 2270. Same as CSCI 5229.</p>
+            				</div>
+            				<div class="card-action">
+              					<a href="#">This doesn't work</a>
+            				</div>
+          				</div>
+        			</div>
+        			<div class="col s12 m6">
+          				<div class="card blue-grey darken-1">
+            				<div class="card-content white-text">
+              					<span class="card-title">Data Mining</span>
+              					<p>Introduces basic data mining concepts and techniques for discovering interesting patterns hidden in large-scale data sets, focusing on issues relating to scalability and efficiency. Topics covered include data preprocessing, data warehouse, association, classification, clustering, and mining specific data types such as time-series, social networks, multimedia, and Web data.</p>
+            				</div>
+            				<div class="card-action">
+              					<a href="#">This doesn't work</a>
+            				</div>
+          				</div>
+        			</div>
+				</div>
+			</div>
+		</div>
+	</main>
+
+<script>
+	
+	
+   
+</script>
+
+
+
+<!--<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90" >-->
+<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90;margin-top:0px;" >
+	<div class="footer-copyright">
+		<div class="container"><center>
+			OO team project, Yen-Teh, Bader, Catherine
+		</center>
+		</div>
+	</div>
+</footer>
+
+</body>
+
+
+</html>
