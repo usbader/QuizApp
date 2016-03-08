@@ -1,1 +1,239 @@
-//TODO: show the quiz and question and add question functionality
+<html>
+<head>
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<!-- CSS  -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/redmond/jquery-ui.css" rel="stylesheet" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+</head>
+
+<style>
+	html {
+		background-color: papayawhip;
+	}
+</style>
+
+<style type="text/css">
+	div.bigDiv {
+		height: 500px;
+	}
+</style>
+
+
+<style type="text/css">
+	#slide {
+		position: relative;
+	}
+
+	#slide1 {
+		bottom: 0;
+		min-height: 80px;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		z-index: 2;
+	}
+</style>
+
+<body>
+
+	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
+
+	<header>
+		<nav class="nav-wrapper grey darken-3 " role="navigation" style="opacity: 0.7" id="nav-bar">
+			<div class="nav-wrapper container">
+				<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
+				<ul class="right hide-on-med-and-down">
+					<li><a href="../index.html"><i class="material-icons">store</i></a></li>
+					<li><a href="courseinfo.html" ><i class="material-icons">reply</i></a></li>
+					<li><a class="waves-effect modal-trigger" href="#TF">Add T/F Question</a></li>
+					<li><a class="waves-effect modal-trigger" href="#Multiple">Add Multiple Choice Question</a></li>
+				</ul>
+			</div>
+		</nav>	
+		<h3 class="center">Q1-Makeup</h3>
+	</header>
+
+	<main>
+		<div class="container">
+			<div class="row">
+			<form action="#">
+				<h6>1.The 'M' in UML stands for 'Management'</h6>
+    			<p>
+      				<input name="group1" type="radio" id="test1" />
+      				<label for="test1">true</label>
+    			</p>
+    			<p>
+      				<input name="group1" type="radio" id="test2" />
+      				<label for="test2">false</label>
+    			</p>
+    			<h6>2.Polymorphic references are designated in class diagrams using italics.</h6>
+    			<p>
+      				<input name="group1" type="radio" id="test1" />
+      				<label for="test1">true</label>
+    			</p>
+    			<p>
+      				<input name="group1" type="radio" id="test2" />
+      				<label for="test2">false</label>
+    			</p>
+    			<h6>3.Which of the following are true with regards to Sequence diagrams? Select the best answer.</h6>
+    			<p>
+      				<input name="group1" type="radio" id="test1" />
+      				<label for="test1">a. none of these</label>
+    			</p>
+    			<p>
+      				<input name="group1" type="radio" id="test2" />
+      				<label for="test2">b. depicts all of the attributes and methods of objects</label>
+    			</p>
+    			<p>
+      				<input name="group1" type="radio" id="test3" />
+      				<label for="test3">c. shows the collaborations between objects in the system Correct</label>
+    			</p>
+    			<p>
+      				<input name="group1" type="radio" id="test4" />
+      				<label for="test4">d. demonstrate concurrency and multi-threaded issues</label>
+    			</p>
+    			<p>
+      				<input name="group1" type="radio" id="test5" />
+      				<label for="test5">e. all right</label>
+    			</p>
+  			</form>
+  			</div>
+		</div>
+	</main>
+
+ <!-- Modal Structure -->
+ <div id="TF" class="modal modal-fixed-footer">
+ 	<div class="modal-content">
+ 		<h4>Add Question</h4>
+ 		<form>
+ 			<fieldset>
+ 				<div class="row">
+                   <div class="input-field col s12">
+          		     <textarea id="textarea1" class="materialize-textarea"></textarea>
+          			  <label for="A">Add Question Title</label>
+        		   </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <select id="add_priority">
+                            <option value="" disabled selected>Gold Answer</option>
+                            <option value="1">true</option>
+                            <option value="2">false</option>
+                        </select>
+                    </div>
+                </div>
+			</fieldset>
+ 		</form>
+ 	</div>
+ 	<div class="modal-footer">
+        <div class="container">
+            <a class="waves-effect waves-light btn" style="position: absolute;left: 30%" id="cancel">Cancel</a>
+            <a class="waves-effect waves-light btn" style="position: absolute;left: 55%" id="submit">Push</a>
+        </div>
+   </div>
+ </div>
+  <div id="Multiple" class="modal modal-fixed-footer">
+            <div class="modal-content">
+                <h4>Add Question</h4>
+                <form id="add_form">
+                    <fieldset>
+                         <div class="row">
+                            <div class="input-field col s12">
+          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<label for="A">Add Question Title</label>
+        					</div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<label for="A">Choice A</label>
+        					</div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<label for="B">Choice B</label>
+        					</div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<label for="C">Choice C</label>
+        					</div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<label for="D">Choice D</label>
+        					</div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+          						<textarea id="textarea1" class="materialize-textarea"></textarea>
+          						<label for="E">Choice E</label>
+        					</div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                               <select id="add_priority">
+                                   <option value="" disabled selected>Gold Answer</option>
+                                   <option value="1">A</option>
+                                   <option value="2">B</option>
+                                   <option value="3">C</option>
+                                   <option value="3">D</option>
+                                   <option value="3">E</option>
+                               </select>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+                <!--End-->
+            </div>
+
+            <div class="modal-footer">
+                <div class="container">
+                    <a class="waves-effect waves-light btn" style="position: absolute;left: 30%" id="cancel">Cancel</a>
+                    <a class="waves-effect waves-light btn" style="position: absolute;left: 55%" id="submit">Push</a>
+                </div>
+            </div>
+        </div>
+
+<!--<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90" >-->
+<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90;margin-top:0px;" >
+	<div class="footer-copyright">
+		<div class="container"><center>
+			OO team project, Yen-Teh, Bader, Catherine
+		</center>
+		</div>
+	</div>
+</footer>
+
+<script>
+	$(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+	$(document).ready(function(){
+    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+    $('.modal-trigger').leanModal();
+  });
+   	$(document).ready(function() {
+    $('input#input_text, textarea#textarea1').characterCounter();
+  });
+   	$(document).ready(function() {
+          $('select').material_select();
+        });
+</script>
+
+</body>
+
+
+</html>
