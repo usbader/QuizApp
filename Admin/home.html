@@ -29,7 +29,6 @@
 	#slide {
 		position: relative;
 	}
-
 	#slide1 {
 		bottom: 0;
 		min-height: 80px;
@@ -48,16 +47,17 @@
 	<header>
 		<nav class="nav-wrapper grey darken-3 " role="navigation" style="opacity: 0.7" id="nav-bar">
 			<div class="nav-wrapper container">
-				<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
+				<a id="logo-container" href="#" class="brand-logo">Quiz App</a>
 				<ul class="right hide-on-med-and-down">
 					<li><a href="../index.html"><i class="material-icons">store</i></a></li>
 					<li><a href="index.html"><i class="material-icons">reply</i></a></li>
-					<li><a class="waves-effect modal-trigger" href="#modal1">Add Quiz</a></li>
+					<li><a class="waves-effect modal-trigger" href="#modal1">Add Course</a></li>
 				</ul>
 			</div>
 		</nav>	
 		<h3 class="center">Object-Oriented Analysis and Design</h3>
 	</header>
+
 
 	<main>
 		<div class="container">
@@ -68,46 +68,33 @@
             				<div class="card-content white-text">
               					<ul class="collapsible" data-collapsible="accordion">
     								<li>
-      									<div class="collapsible-header grey">Student</div>
+      									<div class="collapsible-header grey">Administrator</div>
       									<div class="collapsible-body"><a href="#">Tommy</a></div>
       									<div class="collapsible-body"><a href="#">Bader</a></div>
       									<div class="collapsible-body"><a href="#">Catherine</a></div>
-      									<div class="collapsible-body"><a href="#">David</a></div>
-      									<div class="collapsible-body"><a href="#">John</a></div>
-      									<div class="collapsible-body"><a href="#">Kobe</a></div>
-      									<div class="collapsible-body"><a href="#">Lizzy</a></div>
-      									<div class="collapsible-body"><a href="#">Dazzy</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
-      									<div class="collapsible-body"><a href="#">Jason</a></div>
+      									<div class="collapsible-body"><a href="#">Bad Horse</a></div>
+      								
     								</li>
   								</ul>
             				</div>
           				</div>
         			</div>
         			<div class="col s6">
-          				<h4 class="center">Quizes</h4>
+          				<h4 class="center">Courses</h4>
           				<ul class="collapsible  black-text" data-collapsible="accordion">
           					<li>
-          						<div class="collapsible-header blue-grey darken-1">Q1-Makeup<a href="quiz.html"><i class="material-icons">info_outline</i></a><a href="#"><i class="material-icons">delete</i></a></div>
-          						<div class="collapsible-body">Info: Brushup your skill</div>
-          						<div class="collapsible-body">Deadline: 3/20 3:15pm</div>
+          						<div class="collapsible-header blue-grey darken-1">Cooking 101<a href="quiz.html"><i class="material-icons">info_outline</i></a><a href="#"><i class="material-icons">delete</i></a></div>
+          						<div class="collapsible-body">Description: How not to burn down a building</div>
+                                                        <div class="collapsible-body">Teacher: To Be Assigned</div>
+          						<div class="collapsible-body">T/Th 10am-11am, Lunchroom</div>
           					</li>
           					<li>
-          						<div class="collapsible-header blue-grey darken-1">Q2-UML<a href="quiz.html"><i class="material-icons">info_outline</i></a><a href="#"><i class="material-icons">delete</i></a></div>
-          						<div class="collapsible-body">Info: UML design and analysis</div>
-          						<div class="collapsible-body">Deadline: 4/1 3:00pm</div>
+          						<div class="collapsible-header blue-grey darken-1">How to Evil 101<a href="quiz.html"><i class="material-icons">info_outline</i></a><a href="#"><i class="material-icons">delete</i></a></div>
+          						<div class="collapsible-body">Description: See course title</div>
+                                                        <div class="collapsible-body">Teacher: Dr. Horrible</div>
+          						<div class="collapsible-body">Location: M/W/F 1am-3am, Laundry Room</div>
           					</li>
-          					<li>
-          						<div class="collapsible-header blue-grey darken-1">Q3-Design Patterns<a href="quiz.html"><i class="material-icons">info_outline</i></a><a href="#"><i class="material-icons">delete</i></a></div>
-          						<div class="collapsible-body">Info: Design Patterns usage</div>
-          						<div class="collapsible-body">Deadline: 4/20 3:20pm</div>
-          					</li>
+          				
           				</ul>
         			</div>
 				</div>
@@ -122,18 +109,22 @@
       		<div class="row">
         		<div class="input-field col s12">
           			<textarea id="textarea1" class="materialize-textarea"></textarea>
-          			<label for="textarea1">Quiz Name</label>
+          			<label for="textarea1">Course Name</label>
         		</div>
         		<div class="input-field col s12">
           			<textarea id="textarea1" class="materialize-textarea"></textarea>
-          			<label for="textarea1">Deadline</label>
+          			<label for="textarea1">Description</label>
+        		</div>
+        		<div class="input-field col s12">
+          			<textarea id="textarea1" class="materialize-textarea"></textarea>
+          			<label for="textarea1">Time, Location</label>
         		</div>
       		</div>
     	</form>
   	   </div>
   	</div>
     <div class="modal-footer">
-      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Make Course</a>
     </div>
   </div>
 
