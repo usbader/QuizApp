@@ -1,3 +1,4 @@
+
 <html>
 <head>
     <!--Import Google Icon Font-->
@@ -52,6 +53,16 @@
     background-color: #FFFFFF;
 }
 
+.boxed {
+  border: 5px solid black ;
+  background-color: white;
+      color: #505050;
+      font-size: 120%;
+      width: 98%;
+      
+}
+
+
 
 </style>
 
@@ -60,14 +71,13 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
 <header>
-
 <nav class="nav-wrapper grey darken-3 " role="navigation" style="opacity: 0.7" id="nav-bar">
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
 		<ul class="right hide-on-med-and-down">
 			<li><a href="#">Welcome Bader!</a></li>
-			<li><a class="waves-effect modal-trigger" href="manageCourses.html">Manage courses</a></li>
- </ul>
+					<li><a href="../index.html"><i class="material-icons">store</i></a></li>
+					<li><a href="index.html"><i class="material-icons">reply</i></a></li>		</ul>
 	</div>
 </nav>
 
@@ -79,15 +89,11 @@
 
 <div class="container">
 
-<div class="row">
-
-</div>
-
-<div class="row">
+<div class="row ">
 
 
         <label>Select semester</label>
-  <select class="browser-default">
+  <select class="browser-default" style="   width: 260px;">
     <option value="" >Choose your option</option>
     <option value="1" disabled selected>Spring 2016</option>
     <option value="2">Summer 2016</option>
@@ -95,25 +101,29 @@
   </select>
 </div>
 
-  <div class="row">
+
+<div class="row">
     <div class="col s12">
     
   
   
       <ul class="tabs ">
-        <li class="tab col s3"><a class="active grey-text text-darken-2"  href="#schedule">Schedule</a></li>
-        <li class="tab col s3"><a class=" grey-text text-darken-2"href="#grade">Grades</a></li>
+        <li class="tab col s3"><a class="active grey-text text-darken-2"  href="#drop">Drop course</a></li>
+        <li class="tab col s3"><a class=" grey-text text-darken-2"href="#add">Add course</a></li>
       </ul>
     </div>
-             <div id="schedule" class="col s12">
+             <div id="drop" class="col s12">
                 
                   <div class="card">
 
                      <table class="striped centered">
-                       <thead><tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+                       <thead><tr><th>Select</th><th>Class</th><th>Description</th><th>Days/times</th><th>Instructor</th></tr></thead>
                        <tbody>
-                       <tr><td>No classes</td><td><a href="course.html" class="collection-item"><div class="grey-text text-darken-3">OO Analysis & Design</div></a></td><td>No classes</td><td>Computer Storage</td><td>No classes </td></tr>
-                       <tr><td></td><td>Data Mining</td><td></td><td></td><td></td></tr>
+                       <tr><td>  <form action="#">
+    <p style=" text-align: center;">
+      <input type="checkbox" id="test5" />
+      <label for="test5"></label>
+    </p></td><td><a href="course.html" class="collection-item"><div class="grey-text text-darken-3">CSCI 5448</div></a></td><td>OO Analysis & Design</td><td>MTU 2:00-3:30 PM</td><td>E.Boese </td></tr>
 
                        </tbody> 
                      </table>
@@ -122,23 +132,47 @@
     
              </div>
              
-    <div id="grade" class="col s12">Test 2</div>
+    <div id="add" class="col s12">
+
+<div class="row">
+    <div class="boxed " style="    margin-left: 10px;     padding-top: 50px; ">
+Choose courses from the list:
+    <select multiple>
+      <option value="" disabled selected>Choose your option</option>
+      <option value="1">AI</option>
+      <option value="2">Computer networks</option>
+      <option value="3">UCSDD</option>
+    </select>
+    <label>Materialize Multiple Select</label>
+     </div>
+</div>
+
+   <div>
+   
+      <div class="row">
+  <button class="btn waves-effect waves-light grey darken-3" type="submit" name="action">Add
+    <i class="material-icons right">send</i>
+  </button>
+</div>
+
+   </div>
+     
+    </div>
 
   </div>
-  
-            
 
 
 
 </div>
 <script>
 
-$(".dropdown-button").dropdown();
+ $(document).ready(function() {
+    $('select').material_select();
+  });
 
 </script>
-
-
 </main>
+
 
 
 
@@ -156,5 +190,8 @@ $(".dropdown-button").dropdown();
 </body>
 
 
+
+
 </html>
+
 
