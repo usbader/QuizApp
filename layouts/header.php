@@ -7,6 +7,8 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
 	<!--Let browser know website is optimized for mobile-->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title><?php if(isset($title)){ echo $title; }?></title>
+
 	<!-- CSS  -->
 
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -78,7 +80,8 @@
 			<li><a href="teacher/index.html">Teacher</a></li>
 			<li><a href="student/index.html">Student</a></li>
 			<li><a href="admin/index.html">Admin</a></li>
-			<li><a href="#">Log in</a></li>
+			<li><a href="#" onclick="login()">Log in</a></li>
+			<li><a href="#" ">Register</a></li>
 		</ul>
 	</div>
 </nav>
@@ -111,65 +114,3 @@
 </div>
 </header>
 
-<main>
-
-
-<div class="container">
-	<div class="section">
-
-		<!--   Icon Section   -->
-		<div class="row">
-			<div class="col s12 m6">
-				<div class="icon-block">
-					<h2 class="center grey-text"><i class="material-icons">info</i></h2>
-					<h5 class="center">About</h5>
-					<p class="light">
-						Get rid of your traditional quizing environment, let us provide you a more convinent quizing environment. Try our MyQuiz app, convinent, fast, brilliant.
-					</p>
-				</div>
-			</div>
-			<div class="col s12 m6">
-				<div class="icon-block">
-					<h2 class="center grey-text"><i class="material-icons">stars</i></h2>
-					<h5 class="center">How it works</h5>
-					<p class="light">
-						We offer a pretty easy-using quiz app for teahers who are tired of the traditional testing method. Save your time on gathering the tests, grading the tests, answering students questions. With MyQuiz, all these things can be done online.
-					</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-</main>
-
-<script>
-	$(document).ready(function(){
-		$('.slider').slider({
-			indicators: false,
-			height: 527,
-			interval: 3000});
-	});
-	$(".button-collapse").sideNav();
-
-    $(document).ready(function(){
-      $('.parallax').parallax();
-    });
-</script>
-
-
-
-<!--<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90" >-->
-<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90;margin-top:0px;" >
-	<div class="footer-copyright">
-		<div class="container"><center>
-			OO team project, Yen-Teh, Bader, Catherine
-		</center>
-		</div>
-	</div>
-</footer>
-
-</body>
-
-
-</html>
