@@ -2,6 +2,7 @@
 //if logged in redirect to members page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); }
 //if form has been submitted process it
+echo "heeeeeeey";
 if(isset($_POST['submit'])){
 	//very basic validation
 	if(strlen($_POST['username']) < 3){
