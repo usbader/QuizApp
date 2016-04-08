@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 <?php require('includes/config.php');
 //if logged in redirect to members page
 if( $user->is_logged_in() ){ header('Location: memberpage.php'); }
@@ -138,6 +139,8 @@ require('layout/footer.php');
 ?>
 
 =======
+=======
+>>>>>>> origin/tommy
 <?php
 /**
  * CodeIgniter
@@ -453,4 +456,7 @@ switch (ENVIRONMENT)
  * And away we go...
  */
 require_once BASEPATH.'core/CodeIgniter.php';
+<<<<<<< HEAD
+>>>>>>> origin/tommy
+=======
 >>>>>>> origin/tommy
