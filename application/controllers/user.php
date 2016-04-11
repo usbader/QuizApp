@@ -17,41 +17,40 @@ class User extends CI_Controller {
   function login()
   {
   	//Field validation
-    $this->form_validation->set_rules('type','Type','trim|required');
     $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
     $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
     if($this->form_validation->run() == FALSE)
     {
       //Field validation failed.  User redirected to login page
-      $this->load->view('login_view');
+      $this->load->view('home_view');
     }
-    else
-    {
-      $data = array(
-        'username' => $this->input->post('username'),
-        'password' => $this->input->post('password')
-      );
-      $result = $this->dataload->login_db($data);
-      if($result)
-      {
-        $sess_array = array();
-        foreach($result as $row)
-        {
-          $sess_array = array(
-            'id' => $row->id,
-            'username' => $row->username
-          );
-          $this->session->set_userdata('logged_in', $sess_array);
-        }
-        // enter teacher class or student class to render student or teacher data.
-        return TRUE;
-      }
-      else
-      {
-        $this->form_validation->set_message('check_database', 'Invalid username or password');
-        $this->load->view('login_view')
-      }
-    }
+    // else
+    // {
+    //   $data = array(
+    //     'username' => $this->input->post('username'),
+    //     'password' => $this->input->post('password')
+    //   );
+    //   $result = $this->dataload->login_db($data);
+    //   if($result)
+    //   {
+    //     $sess_array = array();
+    //     foreach($result as $row)
+    //     {
+    //       $sess_array = array(
+    //         'id' => $row->id,
+    //         'username' => $row->username
+    //       );
+    //       $this->session->set_userdata('logged_in', $sess_array);
+    //     }
+    //     // enter teacher class or student class to render student or teacher data.
+    //     return TRUE;
+    //   }
+    //   else
+    //   {
+    //     $this->form_validation->set_message('check_database', 'Invalid username or password');
+    //     $this->load->view('login_view')
+    //   }
+    // }
 
   }
 }
