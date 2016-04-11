@@ -17,8 +17,8 @@ class User extends CI_Controller {
   function login()
   {
   	//Field validation
-    $this->form_validation->set_rules('username', 'Username', 'trim|required|xss_clean');
-    $this->form_validation->set_rules('password', 'Password', 'trim|required|xss_clean');
+    $this->form_validation->set_rules('username', 'Username', 'trim|required');
+    $this->form_validation->set_rules('password', 'Password', 'trim|required');
     if($this->form_validation->run() == FALSE)
     {
       //Field validation failed.  User redirected to login page
