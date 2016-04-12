@@ -3,10 +3,10 @@ Class Dataload extends CI_Model
 {
 	function login_db($username, $password)
 	{
-		$this -> db -> select('id, username, password');
-		$this -> db -> from('users');
-		$this -> db -> where('username = ' . "'" . $username . "'"); 
-		$this -> db -> where('password = ' . "'" . MD5($password) . "'"); 
+		$this -> db -> select('userID, userName, password, type');
+		$this -> db -> from('user');
+		$this -> db -> where('userName = ' . "'" . $username . "'");
+		$this -> db -> where('password = ' . "'" . MD5($password) . "'");
 		$this -> db -> limit(1);
 
 		$query = $this -> db -> get();
@@ -19,6 +19,18 @@ Class Dataload extends CI_Model
 		{
 			return false;
 		}
+
+	}
+
+	function viewCourseTeacher($teacher_id){
+
+		$this -> db -> select('courseID, courseName, semester, teacherID');
+		$this -> db -> from('course');
+		$this -> db -> where('teacherID = ' . "'" . $teacher_id . "'");
+
+		$query = $this -> db -> get();
+
+	 return $query->result();
 
 	}
 }

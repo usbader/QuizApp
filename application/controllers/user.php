@@ -27,11 +27,15 @@ class User extends CI_Controller {
     }
     else
     {
-      $data = array(
+    /*  $data = array(
         'username' => $this->input->post('username'),
         'password' => $this->input->post('password')
-      );
-      $result = $this->dataload->login_db($data);
+      ); */
+
+      $username = $this->input->post('username');
+      $password = $this->input->post('password');
+
+      $result = $this->dataload->login_db($username, $password);
       if($result)
       {
         $sess_array = array();
