@@ -3,13 +3,16 @@ Class Dataload extends CI_Model
 {
     function login_db($type, $username, $password)
     {
-        $this -> db -> select('id, username, password, type');
-        $this -> db -> from('users');
+        $this -> db -> select('userID, userName, password, type');
+        $this -> db -> from('user');
         $this -> db -> where('type', $type);
-        $this -> db -> where('username', $username);
-        $this -> db -> where('password', MD5($password));
+        $this -> db -> where('userName', $username);
+        $this -> db -> where('password', $password);
         $this -> db -> limit(1);
         $query = $this -> db -> get();
+
+
+
         if($query -> num_rows() == 1)
         {
             return $query->result();

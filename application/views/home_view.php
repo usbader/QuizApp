@@ -20,7 +20,7 @@
   <body>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
-          
+
     <!-- write both student and teacher login in the same page,
      each trigger different different controller 'teacher/login'
      and 'student/login' and redirect to student/index and teacher/index page
@@ -127,7 +127,7 @@
       $(document).ready(function(){
         // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
         $('.modal-trigger').leanModal();
-      }); 
-    </script> 
+      });
+    </script>
   </body>
 </html>

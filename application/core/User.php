@@ -21,6 +21,7 @@ class User extends CI_Controller {
     $this->form_validation->set_rules('type','Type','trim|required');
     $this->form_validation->set_rules('username', 'Username', 'trim|required');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
+
     if($this->form_validation->run() == FALSE)
     {
       //Field validation failed.  User redirected to login page
@@ -39,8 +40,8 @@ class User extends CI_Controller {
         foreach($result as $row)
         {
           $sess_array = array(
-            'id' => $row->id,
-            'username' => $row->userName,
+            'id' => $row->userID,
+            'userName' => $row->userName,
             'type' => $row->type
           );
           $this->session->set_userdata('logged_in', $sess_array);
@@ -48,7 +49,7 @@ class User extends CI_Controller {
 
         // enter teacher class or student class to render student or teacher data.
 
-        if(element('type', $sess_array) == 'teacher')
+        if($sess_array['type'] == 'teacher')
         {
           redirect('Teacher', 'refresh');
         }
@@ -68,4 +69,3 @@ class User extends CI_Controller {
 }
 
 ?>
-

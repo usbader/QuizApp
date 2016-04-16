@@ -12,7 +12,8 @@ class Teacher extends User {
   }
 
   function index(){
-    this->viewCourse();
+  //  this->viewCourse();
+  redirect('teacher/viewCourse');
   }
 
   function viewCourse(){
@@ -23,7 +24,7 @@ class Teacher extends User {
      $teacher_id    = $this->session->userdata('id');
      $teacher_username  = $this->session->userdata('username');
 
-     $data['teacherCourses'] = this->Dataload->viewCourseTeacher($teacherID);
+     $data['teacherCourses'] = $this->Dataload->viewCourseTeacher($teacherID);
 
      $this->load->view('teacher_view', $data);
 
