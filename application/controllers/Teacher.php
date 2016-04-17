@@ -1,5 +1,5 @@
 <?php
-
+include_once (dirname(__FILE__) . "/user.php");
 class Teacher extends User {
 
   function __construct()
@@ -13,9 +13,8 @@ class Teacher extends User {
 
   function index(){
   //  this->viewCourse();
-  redirect('teacher/viewCourse');
+  //redirect('teacher/viewCourse');
   }
-
   function viewCourse(){
 
     // this is how you can get session data, in this case teacher. I wanna use it to retrive
