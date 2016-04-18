@@ -22,6 +22,13 @@ Class Dataload extends CI_Model
             return false;
         }
     }
+    function viewCourseStudent($student_id){
+        $this -> db -> select('courseID');
+        $this -> db -> from('StudentCourseRegistry');
+        $this -> db -> where('studentID', $student_id);
+        $query = $this -> db ->get();
+        return $query->result();
+    }
     function viewCourseTeacher($teacher_id){
         $this -> db -> select('courseID, courseName, semester, teacherID');
         $this -> db -> from('course');

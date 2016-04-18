@@ -49,10 +49,10 @@ class User extends CI_Controller {
 
         if($sess_array['type'] == 'teacher')
         {
-          redirect('Teacher/viewCourse', 'refresh');
+          redirect('Teacher', 'refresh');
         }
         else{
-          redirect('Student/viewCourse', 'refresh');
+          redirect('Student', 'refresh');
         }
       }
       else
