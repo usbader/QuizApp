@@ -52,6 +52,7 @@ class User extends CI_Controller {
           redirect('Teacher', 'refresh');
         }
         else{
+
           redirect('Student', 'refresh');
         }
       }

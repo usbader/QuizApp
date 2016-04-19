@@ -1,5 +1,6 @@
 <?php
 include_once (dirname(__FILE__) . "/user.php");
+
 class Teacher extends User {
 
   function __construct()
@@ -20,10 +21,11 @@ class Teacher extends User {
     // this is how you can get session data, in this case teacher. I wanna use it to retrive
     // teacher courses
 
-     $teacher_id = $this->session->userdata('id');
-     $teacher_username  = $this->session->userdata('username');
+     $data['teacher_id']    = $this->session->userdata('logged_in')['id'];
 
-     $data['teacherCourses'] = $this->Dataload->viewCourseTeacher($teacher_id);
+     $data['teacher_username']  = $this->session->userdata('logged_in')['userName'];
+
+     $data['teacherCourses'] = $this->Dataload->viewCourseTeacher($data['teacher_id']);
 
      $this->load->view('teacher_view', $data);
 
