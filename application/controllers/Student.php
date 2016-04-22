@@ -15,27 +15,37 @@ class Student extends User {
   function viewCourse()
   {
   	$student_id = $this->session->userdata('logged_in')['id'];
-  	$student_username  = $this->session->userdata('logged_in')['userName'];
+  	$data['student_username'] = $this->session->userdata('logged_in')['userName'];
   	$courses = $this->dataload->viewCourseStudent($student_id);
-  	// echo '<pre>'; print_r($courses);
+    $data['courses'] = array();
+    foreach($courses as $c){
+      if (!array_key_exists($c->semester, $data['courses']))
+        $data['courses'][$c->semester]=array();
+      array_push($data['courses'][$c->semester],$c->courseID);
+      }
+      // echo '<pre>'; print_r($data['courses']);exit;
   	// echo '<pre>'; print_r($this->session->all_userdata());exit;
   	//echo "<script type='text/javascript'>alert('".$student_id."');</script>;";
   	
-  	$courseQuiz = new stdClass;
-  	foreach($courses as $course)
+  	$data['courseQuiz'] = array();
+    $this->load->library('course');
+  	foreach($courses as $c)
   	{	
-  		$courseQuiz->$course = array();
-  		$cid = $course->CourseID;
+  		$data['courseQuiz'][$c->courseID] = array();
+  		$cid = $c->courseID;
   		//create a course object
-  		$this->load->library('course',$cid);
   		//get the quiz with course object
-  		$quizs = $this->course->getQuiz();
-  		foreach($quizs as $quiz)
-  		{
-  			array_push($courseQuiz->$course, "$quiz");
-  		}
+  		$quizs = $this->course->getQuiz($cid);
+      if ($quizs){
+  		  foreach($quizs as $quiz)
+  		  {
+          // echo '<pre>'; print_r($quiz);exit;
+  			 $data['courseQuiz'][$c->courseID][] = $quiz;
+  		  }
+      }
   	}
-  	$this->load->view('student_view', $courseQuiz);
+    echo '<pre>'; print_r($data['courseQuiz']);exit;
+  	// $this->load->view('student_view', $data);
   }
 
 }

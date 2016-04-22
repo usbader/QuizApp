@@ -36,7 +36,6 @@ class User extends CI_Controller {
       $result = $this->dataload->login_db($type, $username, $password);
       if($result)
       {
-        $sess_array = object();
         foreach($result as $row)
         {
           $sess_array = array(

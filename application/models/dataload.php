@@ -23,7 +23,7 @@ Class Dataload extends CI_Model
         }
     }
     function viewCourseStudent($student_id){
-        $this -> db -> select('courseID');
+        $this -> db -> select('courseID, semester');
         $this -> db -> from('StudentCourseRegistry');
         $this -> db -> where('studentID', $student_id);
         $query = $this -> db ->get();
@@ -35,6 +35,13 @@ Class Dataload extends CI_Model
         $this -> db -> where('teacherID = ' . "'" . $teacher_id . "'");
         $query = $this -> db -> get();
      return $query->result();
+    }
+    function getQuiz($cid){
+        $this -> db -> select('quizID, quizName, beginTime, endTime');
+        $this -> db -> from('Quiz');
+        $this -> db -> where('courseID', $cid);
+        $query = $this -> db -> get();
+    return $query->result();
     }
 }
 ?>

@@ -65,7 +65,7 @@
 	<div class="nav-wrapper container">
 		<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
 		<ul class="right hide-on-med-and-down">
-			<li><a href="#">Welcome Bader!</a></li>
+			<li><a href="#"><?php echo $student_username?></a></li>
 			<li><a class="waves-effect modal-trigger" href="manageCourses.html">Manage courses</a></li>
  </ul>
 	</div>
@@ -86,12 +86,12 @@
 <div class="row">
 
 
-        <label>Select semester</label>
-  <select class="browser-default">
-    <option value="" >Choose your option</option>
-    <option value="1" disabled selected>Spring 2016</option>
-    <option value="2">Summer 2016</option>
-    <option value="3">Fall 2016</option>
+  <label>Select semester</label>
+  <select name="semesterOption" class="browser-default" onchange="changeFunc();">
+    <option value="" selected="selected">Choose your option</option>
+    <option value="Spring 2016" >Spring 2016</option>
+    <option value="Summer 2016">Summer 2016</option>
+    <option value="Fall 2016">Fall 2016</option>
   </select>
 </div>
 
