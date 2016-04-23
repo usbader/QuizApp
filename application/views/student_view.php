@@ -75,67 +75,84 @@
 </header>
 
 <main>
-
-
-<div class="container">
-
-<div class="row">
-
-</div>
-
-<div class="row">
-
-
-  <label>Select semester</label>
-  <select name="semesterOption" class="browser-default" onchange="changeFunc();">
-    <option value="" selected="selected">Choose your option</option>
-    <option value="Spring 2016" >Spring 2016</option>
-    <option value="Summer 2016">Summer 2016</option>
-    <option value="Fall 2016">Fall 2016</option>
-  </select>
-</div>
+  <div class="row">
+    <form method="post">
+      <div class="col s12">
+        <label>Select semester</label>
+        <select name="semesterOption" class="browser-default" id="semesterOption" onchange="changeFunc();">
+          <option value="" selected="selected">Choose your option</option>
+          <option value="Spring 2016" >Spring 2016</option>
+          <option value="Summer 2016">Summer 2016</option>
+          <option value="Fall 2016">Fall 2016</option>
+        </select>
+      </div>
+      <button class="btn waves-effect waves-light grey darken-3 right" type="submit" name="action">Go
+        <i class="material-icons right">send</i>
+      </button>
+    </form>
+  </div>
 
   <div class="row">
     <div class="col s12">
+      <?php
+      if(isset($_POST['semesterOption'])){
+
+      foreach($courses as $c) {
+            if($_POST['semesterOption'] == $c->semester){
+        ?>
+
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $c->courseName;?></div>
+          <?php
+            $cid = $c->courseID;
+            foreach($courseQuiz[$cid] as $quiz){
+          ?>
+            <div class="collapsible-body"><p><?php echo $quiz->quizName?></p></div>
+          <?php }?>
+        </li>
+      </ul>
+      <?php } } } ?>
+    </div>
+  </div>
     
   
   
-      <ul class="tabs ">
+      <!-- <ul class="tabs ">
         <li class="tab col s3"><a class="active grey-text text-darken-2"  href="#schedule">Schedule</a></li>
         <li class="tab col s3"><a class=" grey-text text-darken-2"href="#grade">Grades</a></li>
       </ul>
-    </div>
-             <div id="schedule" class="col s12">
-                
-                  <div class="card">
+      <div id="schedule" class="col s12">
+        <div class="card">
+          <table class="striped centered">
+            <thead><tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+              <tbody>
+                <tr><td>No classes</td><td><a href="course.html" class="collection-item"><div class="grey-text text-darken-3">OO Analysis & Design</div></a></td><td>No classes</td><td>Computer Storage</td><td>No classes </td></tr>
+                <tr><td></td><td>Data Mining</td><td></td><td></td><td></td></tr>
+              </tbody> 
+          </table>
+        </div>
+      </div>
+   -->
+          
 
-                     <table class="striped centered">
-                       <thead><tr><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
-                       <tbody>
-                       <tr><td>No classes</td><td><a href="course.html" class="collection-item"><div class="grey-text text-darken-3">OO Analysis & Design</div></a></td><td>No classes</td><td>Computer Storage</td><td>No classes </td></tr>
-                       <tr><td></td><td>Data Mining</td><td></td><td></td><td></td></tr>
-
-                       </tbody> 
-                     </table>
-
-                  </div>
-    
-             </div>
-             
-    <div id="grade" class="col s12">Test 2</div>
-
-  </div>
-  
-            
-
-
-
-</div>
 <script>
+  $(".dropdown-button").dropdown();
 
-$(".dropdown-button").dropdown();
-
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
 </script>
+<script>
+  function changeFunc() {
+    var e = document.getElementById('semesterOption');
+    var semesterChoice = e.options[e.selectedIndex].text;
+    Materialize.toast(semesterChoice,'1000');
+  }
+</script>
+
 
 
 </main>

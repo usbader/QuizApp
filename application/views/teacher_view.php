@@ -10,16 +10,6 @@
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <link type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/redmond/jquery-ui.css" rel="stylesheet" />
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-
-    <script>
-       function changeFunc() {
-         var e = document.getElementById('semesterOption');
-        var semesterChoice = e.options[e.selectedIndex].text;
-
-
-     alert(semesterChoice);
-   }
-       </script>
 </head>
 
 <style>
@@ -86,39 +76,26 @@
 
 <main>
 
-
-<div class="container">
-
-<div class="row">
-
-</div>
-
-<div class="row">
-  <form method="post">
-<div class="col s12">
+  <div class="row">
+    <form method="post">
+      <div class="col s12">
         <label>Select semester</label>
-  <select name="semesterOption" class="browser-default" onchange="changeFunc();">
-    <option value="" selected="selected">Choose your option</option>
-    <option value="Spring 2016" >Spring 2016</option>
-    <option value="Summer 2016">Summer 2016</option>
-    <option value="Fall 2016">Fall 2016</option>
-  </select>
-</div>
-
-</div>
-
-<div class="row">
-  <button class="btn waves-effect waves-light grey darken-3 right" type="submit" name="action">Submit
-     <i class="material-icons right">send</i>
-   </button>
- </form>
-</div>
+        <select name="semesterOption" class="browser-default" id="semesterOption" onchange="changeFunc();">
+          <option value="" selected="selected">Choose your option</option>
+          <option value="Spring 2016" >Spring 2016</option>
+          <option value="Summer 2016">Summer 2016</option>
+          <option value="Fall 2016">Fall 2016</option>
+        </select>
+      </div>
+        <button class="btn waves-effect waves-light grey darken-3 right" type="submit" name="action">Go
+        <i class="material-icons right">send</i>
+        </button>
+    </form>
+  </div>
 
 
-   <div class="row">
+  <div class="row">
     <div class="col s12">
-
-
       <?php
       if(isset($_POST['semesterOption'])){
 
@@ -127,35 +104,30 @@
         ?>
 
 			<ul class="collapsible" data-collapsible="accordion">
-     <li>
-       <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $teacherCourse->courseName;?></div>
-       <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
-     </li>
-
-   </ul>
-   <?php } } } ?>
-
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $teacherCourse->courseName;?></div>
+          <div class="collapsible-body"><p>Lorem ipsum dolor sit amet.</p></div>
+        </li>
+      </ul>
+      <?php } } } ?>
     </div>
-
-
-
-
-
-</div>
-
+  </div>
 
 <script>
+  $(".dropdown-button").dropdown();
 
-
-
-$(".dropdown-button").dropdown();
-
-$(document).ready(function(){
-   $('.collapsible').collapsible({
-     accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
-   });
- });
-
+  $(document).ready(function(){
+    $('.collapsible').collapsible({
+      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+    });
+  });
+</script>
+<script>
+  function changeFunc() {
+    var e = document.getElementById('semesterOption');
+    var semesterChoice = e.options[e.selectedIndex].text;
+    Materialize.toast(semesterChoice,'1000');
+  }
 </script>
 
 

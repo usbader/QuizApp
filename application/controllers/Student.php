@@ -17,19 +17,20 @@ class Student extends User {
   	$student_id = $this->session->userdata('logged_in')['id'];
   	$data['student_username'] = $this->session->userdata('logged_in')['userName'];
   	$courses = $this->dataload->viewCourseStudent($student_id);
+    // echo '<pre>'; print_r($courses);
     $data['courses'] = array();
     foreach($courses as $c){
-      if (!array_key_exists($c->semester, $data['courses']))
-        $data['courses'][$c->semester]=array();
-      array_push($data['courses'][$c->semester],$c->courseID);
-      }
-      // echo '<pre>'; print_r($data['courses']);exit;
+        $course = $this->dataload->courseInfo($c->courseID)[0];
+        array_push($data['courses'],$course);
+    }
+    //echo '<pre>'; print_r($data['courses']);exit;
+    //echo '<pre>'; print_r($data['courses'][0]);
   	// echo '<pre>'; print_r($this->session->all_userdata());exit;
   	//echo "<script type='text/javascript'>alert('".$student_id."');</script>;";
   	
   	$data['courseQuiz'] = array();
     $this->load->library('course');
-  	foreach($courses as $c)
+  	foreach($data['courses'] as $c)
   	{	
   		$data['courseQuiz'][$c->courseID] = array();
   		$cid = $c->courseID;
@@ -44,8 +45,8 @@ class Student extends User {
   		  }
       }
   	}
-    echo '<pre>'; print_r($data['courseQuiz']);exit;
-  	// $this->load->view('student_view', $data);
+     // echo '<pre>'; print_r($data['courseQuiz']);exit;
+  	$this->load->view('student_view', $data);
   }
 
 }
