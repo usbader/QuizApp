@@ -108,7 +108,10 @@
             $cid = $c->courseID;
             foreach($courseQuiz[$cid] as $quiz){
           ?>
-            <div class="collapsible-body"><p><?php echo $quiz->quizName?></p></div>
+            <div class="collapsible-body">
+              <h5><?php echo $quiz->quizName?></h5>
+              <p><?php echo $quiz->beginTime; echo ' to '; echo $quiz->endTime;?></p>
+            </div>
           <?php }?>
         </li>
       </ul>
