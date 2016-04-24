@@ -15,7 +15,9 @@ class User extends CI_Controller {
     $this->load->helper('form');
     $this->load->view('home_view');
   }
-  function login(){
+  function login()
+  {
+    //Field validation
     $this->form_validation->set_rules('type','Type','trim|required');
     $this->form_validation->set_rules('username', 'Username', 'trim|required');
     $this->form_validation->set_rules('password', 'Password', 'trim|required');

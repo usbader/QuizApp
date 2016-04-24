@@ -27,12 +27,12 @@ class Student extends User {
     //echo '<pre>'; print_r($data['courses'][0]);
   	// echo '<pre>'; print_r($this->session->all_userdata());exit;
   	//echo "<script type='text/javascript'>alert('".$student_id."');</script>;";
-  	
+
   	$data['courseQuiz'] = array();
     //instantiate a course object
     $this->load->library('course');
   	foreach($data['courses'] as $c)
-  	{	
+  	{
   		$data['courseQuiz'][$c->courseID] = array();
   		$cid = $c->courseID;
   		//create a course object

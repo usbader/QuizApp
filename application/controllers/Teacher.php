@@ -14,6 +14,7 @@ class Teacher extends User {
 
   function index(){
   //  this->viewCourse();
+  $this->load->helper('form');
   redirect('teacher/viewCourse');
   }
   function viewCourse(){
@@ -28,6 +29,13 @@ class Teacher extends User {
      $data['teacherCourses'] = $this->Dataload->viewCourseTeacher($data['teacher_id']);
 
      $this->load->view('teacher_view', $data);
+
+  }
+
+  function addQuestion(){
+
+    $quiz_title = $this->input->post('quiz_title');
+    echo "<script type='text/javascript'>alert('$quiz_title');</script>";
 
   }
 

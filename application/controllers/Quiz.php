@@ -15,7 +15,7 @@
   				array_push($data['questions'], $question);
   			}
   			$this->load->view('student_quiz_view', $data);
-  			
+
   		}
 	}
 
