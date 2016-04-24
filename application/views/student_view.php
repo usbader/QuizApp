@@ -109,8 +109,8 @@
             foreach($courseQuiz[$cid] as $quiz){
           ?>
             <div class="collapsible-body">
-              <a href="<?php echo base_url()?>index.php/quiz/index/<?php echo $quiz->quizID?>"><h5><?php echo $quiz->quizName?></h5></a>
-              <p><?php echo $quiz->beginTime; echo ' to '; echo $quiz->endTime;?></p>
+              <a href="<?php echo base_url()?>index.php/quiz/attemptQuiz/<?php echo $quiz->quizID?>"><h5><?php echo $quiz->quizName?></h5></a>
+              <p><?php echo $quiz->Duration;?></p>
             </div>
           <?php }?>
         </li>
@@ -153,9 +153,6 @@
     var e = document.getElementById('semesterOption');
     var semesterChoice = e.options[e.selectedIndex].text;
     Materialize.toast(semesterChoice,'1000');
-  }
-  function selectQuiz(ID){
-    
   }
 </script>
 

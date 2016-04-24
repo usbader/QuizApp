@@ -43,10 +43,24 @@ Class Dataload extends CI_Model
         $query = $this -> db -> get();
      return $query->result();
     }
-    function getQuiz($cid){
-        $this -> db -> select('quizID, quizName, beginTime, endTime');
+    function getQuiz($c_id){
+        $this -> db -> select('quizID, quizName, Duration');
         $this -> db -> from('Quiz');
-        $this -> db -> where('courseID', $cid);
+        $this -> db -> where('courseID', $c_id);
+        $query = $this -> db -> get();
+    return $query->result();
+    }
+    function getQuestionID($quiz_id){
+        $this -> db -> select('questionID');
+        $this -> db -> from('Question');
+        $this -> db -> where('quizID', $quiz_id);
+        $query = $this -> db -> get();
+    return $query->result();
+    }
+    function getQuestionInfo($question_id){
+        $this -> db -> select('questionStatement, questionType, option1, option2, option3, option4, option5');
+        $this -> db -> from('Question');
+        $this -> db -> where('questionID', $question_id);
         $query = $this -> db -> get();
     return $query->result();
     }

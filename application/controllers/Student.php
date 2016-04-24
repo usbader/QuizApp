@@ -29,6 +29,7 @@ class Student extends User {
   	//echo "<script type='text/javascript'>alert('".$student_id."');</script>;";
   	
   	$data['courseQuiz'] = array();
+    //instantiate a course object
     $this->load->library('course');
   	foreach($data['courses'] as $c)
   	{	
