@@ -6,7 +6,7 @@ class Question{
 		$CI->load->model('Dataload');
 		$Question = $CI->Dataload->getQuestionInfo($question_id);
 		return $Question;
-	
+
 	}
 }
 

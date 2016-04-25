@@ -43,6 +43,12 @@ Class Dataload extends CI_Model
         $query = $this -> db -> get();
      return $query->result();
     }
+    function makeQuiz($title, $duration, $courseID ){
+      $isPosted = false;
+      $quizID = $this->db->count_all('Quiz') + 1;
+      $this->db->query("INSERT INTO Quiz VALUES('$quizID', '$title','$isPosted','$duration','$courseID')");
+    return $quizID;
+    }
     function getQuiz($c_id){
         $this -> db -> select('quizID, quizName, Duration');
         $this -> db -> from('Quiz');
@@ -63,6 +69,13 @@ Class Dataload extends CI_Model
         $this -> db -> where('questionID', $question_id);
         $query = $this -> db -> get();
     return $query->result();
+    }
+    public function addQuestion($statement, $questionType, $key, $option1, $option2, $option3, $option4, $option5, $quizID){
+      $questionID = $this->db->count_all('Question') + 1;
+      $studentAnswer= "empty";
+      // not yet corrected
+      $isCorrect=-1;
+      $this->db->query("INSERT INTO Question VALUES('$questionID', '$statement','$key','$studentAnswer','$isCorrect','$questionType','$quizID','$option1','$option2','$option3','$option4','$option5')");
     }
 }
 ?>
