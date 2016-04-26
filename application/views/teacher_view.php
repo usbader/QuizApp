@@ -95,107 +95,61 @@
 
 
 <div class="row">
-  <div class="col s12">
-    <?php
-    $temp = -1;
-    if(isset($_POST['semesterOption'])){
+    <div class="col s12">
+      <?php
+      if(isset($_POST['semesterOption'])){
 
-    foreach($teacherCourses as $teacherCourse) {
-          if($_POST['semesterOption'] == $teacherCourse->semester){
-      ?>
+      foreach($courses as $c) {
+            if($_POST['semesterOption'] == $c->semester){
+        ?>
 
-			    <ul class="collapsible" data-collapsible="accordion">
-      <li>
-        <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $teacherCourse->courseName;?></div>
-        <div class="collapsible-body"><span><p>Make Quiz.</p> <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1" onclick="serieName=this.dataset.serieName;document.querySelector('#modal1 input#name').value = serieName;return true;" data-serie-name="<?= $teacherCourse->courseID ?>"><i class="material-icons">add</i></a></span></div>
-      </li>
-    </ul>
-    <?php } } } ?>
+      <ul class="collapsible" data-collapsible="accordion">
+        <li>
+          <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $c->courseName;?>
+            <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#modal1" onclick="serieName=this.dataset.serieName;document.querySelector('#modal1 input#name').value = serieName;return true;" data-serie-name="<?= $c->courseID ?>"><i class="material-icons">add</i></a>
+          </div>
+          <?php
+            $cid = $c->courseID;
+            foreach($courseQuiz[$cid] as $quiz){
+          ?>
+            <div class="collapsible-body">
+              <a href="<?php echo base_url()?>index.php/quiz/attemptQuiz/<?php echo $quiz->quizID?>"><h5><?php echo $quiz->quizName?></h5></a>
+              <p><?php echo $quiz->Duration;?></p>
+            </div>
+          <?php }?>
+        </li>
+      </ul>
+      <?php } } } ?>
+    </div>
+  </div>
 
    <!-- Modal Structure -->
 <div id="modal1" class="modal">
   <?php
-  $hidden = array('courseID' => $teacherCourse->courseID);
-  echo form_open('quiz/makeQuiz','', $hidden); ?>
+  $hidden = array('courseID' => $c->courseID);
+  echo form_open('teacher/makeQuiz','', $hidden); ?>
   <div class="modal-content">
     <h4>Make Quiz</h4>
     <div class="row">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="name" name="courseID" type="hidden">
-        <input id="quiz_title" name="quiz_title" type="text" class="validate">
-        <label for="quiz_title">Quiz Title</label>
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="name" name="courseID" type="hidden">
+          <input id="quiz_title" name="quiz_title" type="text" class="validate">
+          <label for="quiz_title">Quiz Title</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <input id="duration" name="duration" type="text" class="validate">
+          <label for="duration">Duration(in minutes)</label>
+        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="duration" name="duration" type="text" class="validate">
-        <label for="duration">Duration(in minutes)</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="statement" name="statement" type="text" class="validate">
-        <label for="statement">Question Statement</label>
-      </div>
-    </div>
-    <div class="row">
-      <p>
-        <label >Choose question type</label><br>
-        <input name="group1" type="radio" id="answer1" value="0" onclick="foo()"/>
-        <label for="answer1">T/F</label>
-     </p>
-     <p>
-       <input name="group1" type="radio" id="answer2" value="1" onclick="foo()"/>
-       <label for="answer2">Multiple Choice</label>
-    </p>
-    </div>
-    <div class="row">
-      <div class="input-field col s6">
-        <input id="key" name="key" type="text" class="validate">
-        <label for="key">Question Key Answer</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input disabled id="option1" name="option1" type="text" class="validate">
-        <label for="option1">Option 1</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input disabled id="option2" name="option2" type="text" class="validate">
-        <label for="option2">Option 2</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input disabled id="option3" name="option3" type="text" class="validate">
-        <label for="option3">Option 3</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input disabled id="option4" name="option4" type="text" class="validate">
-        <label for="option4">Option 4</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input disabled id="option5" name="option5" type="text" class="validate">
-        <label for="option5">Option 5</label>
-      </div>
-    </div>
-</div>
-
   </div>
   <div class="modal-footer">
     <input class=" modal-action modal-close waves-effect waves-green btn-flat" type="submit" value="Submit Quiz"/>
-    <input class=" modal-action  waves-effect waves-green btn-flat" type="submit" value="Add Question"/>
-
   </div>
-</form>
-
+  </form>
 </div>
 
 

@@ -21,27 +21,7 @@
   			$this->load->view('student_quiz_view', $data);
 
   		}
-      function makeQuiz(){
-
-            $quiz_title = $this->input->post('quiz_title');
-            $duration = $this->input->post('duration');
-            $statement = $this->input->post('statement');
-            $questionType = $this->input->post('group1');
-            $key = $this->input->post('key');
-            $option1 = $this->input->post('option1');
-            $option2 = $this->input->post('option2');
-            $option3 = $this->input->post('option3');
-            $option4 = $this->input->post('option4');
-            $option5 = $this->input->post('option5');
-
-            $courseID = $this->input->post('courseID');
-
-
-            $quizID = $this->dataload->makeQuiz($quiz_title, $duration, $courseID);
-            $this->dataload->addQuestion($statement, $questionType, $key, $option1, $option2, $option3, $option4, $option5, $quizID);
-
-            redirect('teacher/viewCourse');
-      }
+      
 	}
 
 

@@ -26,12 +26,28 @@ class Teacher extends User {
 
      $data['teacher_username']  = $this->session->userdata('logged_in')['userName'];
 
-     $data['teacherCourses'] = $this->Dataload->viewCourseTeacher($data['teacher_id']);
-
+     $data['courses'] = $this->Dataload->viewCourseTeacher($data['teacher_id']);
+     // usw courseID to get quiz Info
+     $data['courseQuiz'] = array();
+     // '<pre>'; print_r($data['courses']);
+     foreach ($data['courses'] as $course) {
+        $quizs = $this->Dataload->getQuiz($course->courseID);
+        $data['courseQuiz'][$course->courseID] = $quizs;
+     }
+     //echo '<pre>'; print_r($data['courseQuiz']);
      $this->load->view('teacher_view', $data);
 
   }
+  function makeQuiz(){
 
+            $quiz_title = $this->input->post('quiz_title');
+            $duration = $this->input->post('duration');
+            $courseID = $this->input->post('courseID');
+            $quizID = $this->dataload->makeQuiz($quiz_title, $duration, $courseID);
+            //$this->dataload->addQuestion($statement, $questionType, $key, $option1, $option2, $option3, $option4, $option5, $quizID);
+
+            redirect('teacher/viewCourse');
+      }
   function addQuestion(){
 
     $quiz_title = $this->input->post('quiz_title');
