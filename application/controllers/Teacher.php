@@ -47,14 +47,7 @@ class Teacher extends User {
             //$this->dataload->addQuestion($statement, $questionType, $key, $option1, $option2, $option3, $option4, $option5, $quizID);
 
             redirect('teacher/viewCourse');
-      }
-  function addQuestion(){
-
-    $quiz_title = $this->input->post('quiz_title');
-    echo "<script type='text/javascript'>alert('$quiz_title');</script>";
-
   }
-
 
 }
 ?>

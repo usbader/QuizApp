@@ -113,7 +113,7 @@
             foreach($courseQuiz[$cid] as $quiz){
           ?>
             <div class="collapsible-body">
-              <a href="<?php echo base_url()?>index.php/quiz/attemptQuiz/<?php echo $quiz->quizID?>"><h5><?php echo $quiz->quizName?></h5></a>
+              <a href="<?php echo base_url();?>index.php/quiz/editQuiz/<?php echo $quiz->quizID;?>"><h5><?php echo $quiz->quizName?></h5></a>
               <p><?php echo $quiz->Duration;?></p>
             </div>
           <?php }?>
@@ -176,29 +176,6 @@ $(document).ready(function(){
      accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
    });
  });
-
- document.getElementById('answer1').onclick = function(){
-     if(document.getElementById('answer1').checked) {
-       //call your function here
-       document.getElementById('option1').disabled = false
-       document.getElementById('option2').disabled = false
-       document.getElementById('option3').disabled = true
-       document.getElementById('option4').disabled = true
-       document.getElementById('option5').disabled = true
-     }
- };
- document.getElementById('answer2').onclick = function(){
-  if(document.getElementById('answer2').checked) {
-        //call your function here
-        document.getElementById('option1').disabled = false
-        document.getElementById('option2').disabled = false
-        document.getElementById('option3').disabled = false
-        document.getElementById('option4').disabled = false
-        document.getElementById('option5').disabled = false
-
-
-      }
-};
 </script>
 <script>
   function changeFunc() {
