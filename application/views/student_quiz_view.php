@@ -42,7 +42,7 @@
 		width: 100%;
 		z-index: 2;
 	}
-	
+
 	thead {
     background-color: #505050;
     color: white;
@@ -50,6 +50,17 @@
 
 	tbody {
     background-color: #FFFFFF;
+}
+
+.boxed
+{
+  border: 5px solid black ;
+  background-color: white;
+      color: #505050;
+      font-size: 120%;
+   padding-left: 20px;
+   padding-right: 20px;
+   margin-bottom: 20px;
 }
 
 
@@ -60,27 +71,51 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
 <main>
-  
 
+  <nav>
+    <div class="nav-wrapper grey darken-3">
+      <a href="<?php echo base_url();?>" class="brand-logo">MyQuiz</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Welcome <?php $studentName = $this->uri->segment(9); $studentName = urldecode($studentName); echo $studentName;?>!</a></li>
+        <li><a href="<?php echo base_url();?>index.php/student/viewcourse"><i class="material-icons">reply</i></a></li>
+      </ul>
+  </nav>
+
+<div class="container">
+  <div class="row">
+
+    <h3><?php
+     $courseName = $this->uri->segment(7);
+     $courseName = urldecode($courseName);
+     echo $courseName;
+     ?>
+    </h3>
+  </div>
+  <div class="row">
+
+         <h5> Quiz <?php $quizID = $this->uri->segment(3);echo $quizID?>: <?php $quizName = $this->uri->segment(5);$quizName = urldecode($quizName); echo $quizName?></h3>
+
+  </div>
   <div class="row">
     <form class="col s12">
       <?php
-      foreach($questions as $q) {
+      foreach($questions as $key=>$q) {
       ?>
-        <div class="row"><?php echo $q->questionStatement?></div>
-        <?php 
+      <div class="boxed">
+        <div class="row">Q<?php echo ++$key ?>: <?php echo $q->questionStatement ?></div>
+        <?php
           if ($q->questionType==0){
         ?>
-        <div class="input-field col s12">
+        <div class="row">
           <select>
-            <option value="" disabled selected>True and Flase</option>
+            <option value="" disabled selected>True and False</option>
             <option value="1"><?php echo $q->option1 ?></option>
             <option value="2"><?php echo $q->option2 ?></option>
           </select>
           <label>Materialize Select</label>
-        </div> 
+        </div>
         <?php }else{ ?>
-        <div class="input-field col s12">
+        <div class="row">
           <select>
             <option value="" disabled selected>Multiple Choice</option>
             <option value="1"><?php echo $q->option1 ?></option>
@@ -90,13 +125,14 @@
             <option value="5"><?php echo $q->option5 ?></option>
           </select>
           <label>Materialize Select</label>
-        </div> 
+        </div>
         <?php } ?>
+      </div>
       <?php } ?>
     </form>
   </div>
-    
-          
+</div>
+
 <script>
   $(document).ready(function() {
     $('select').material_select();
@@ -124,4 +160,3 @@
 
 
 </html>
-

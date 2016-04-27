@@ -42,7 +42,7 @@
 		width: 100%;
 		z-index: 2;
 	}
-	
+
 	thead {
     background-color: #505050;
     color: white;
@@ -61,15 +61,13 @@
 
 <header>
 
-<nav class="nav-wrapper grey darken-3 " role="navigation" style="opacity: 0.7" id="nav-bar">
-	<div class="nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="#"><?php echo 'wellcome '; echo $student_username?></a></li>
-			<li><a class="waves-effect modal-trigger" href="manageCourses.html">Manage courses</a></li>
- </ul>
-	</div>
-</nav>
+  <nav>
+    <div class="nav-wrapper grey darken-3">
+      <a href="<?php echo base_url();?>" class="brand-logo">MyQuiz</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#"><?php echo 'Welcome '; echo $student_username; echo'!';?></a></li>
+      </ul>
+  </nav>
 
 
 </header>
@@ -106,11 +104,18 @@
           <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $c->courseName;?></div>
           <?php
             $cid = $c->courseID;
-            foreach($courseQuiz[$cid] as $quiz){
+            foreach($courseQuiz[$cid] as $key => $quiz){
           ?>
             <div class="collapsible-body">
-              <a href="<?php echo base_url()?>index.php/quiz/attemptQuiz/<?php echo $quiz->quizID?>"><h5><?php echo $quiz->quizName?></h5></a>
-              <p><?php echo $quiz->Duration;?></p>
+              <ul class="collection">
+                 <li class="collection-item avatar">
+                    <i class="material-icons">mode_edit</i><span class="title">Quiz <?php echo ++$key ?>: <?php echo $quiz->quizName?></span>
+                        <p>Duration: <?php echo $quiz->Duration;?> minutes<br>
+                        </p>
+
+                        <a href="<?php echo base_url()?>index.php/quiz/attemptQuiz/<?php echo $quiz->quizID;?>/quizName/<?php echo $quiz->quizName;?>/courseName/<?php echo $c->courseName;?>/studentName/<?php echo $student_username;?>" class="secondary-content"><i class="material-icons">send</i></a>
+                 </li>
+              </ul>
             </div>
           <?php }?>
         </li>
@@ -118,9 +123,9 @@
       <?php } } } ?>
     </div>
   </div>
-    
-  
-  
+
+
+
       <!-- <ul class="tabs ">
         <li class="tab col s3"><a class="active grey-text text-darken-2"  href="#schedule">Schedule</a></li>
         <li class="tab col s3"><a class=" grey-text text-darken-2"href="#grade">Grades</a></li>
@@ -132,12 +137,12 @@
               <tbody>
                 <tr><td>No classes</td><td><a href="course.html" class="collection-item"><div class="grey-text text-darken-3">OO Analysis & Design</div></a></td><td>No classes</td><td>Computer Storage</td><td>No classes </td></tr>
                 <tr><td></td><td>Data Mining</td><td></td><td></td><td></td></tr>
-              </tbody> 
+              </tbody>
           </table>
         </div>
       </div>
    -->
-          
+
 
 <script>
   $(".dropdown-button").dropdown();
@@ -177,4 +182,3 @@
 
 
 </html>
-

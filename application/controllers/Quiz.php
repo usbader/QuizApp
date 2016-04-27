@@ -8,7 +8,7 @@
         $this->load->helper('form');
   		}
       function index(){
-        
+
 
       }
   		function attemptQuiz($quizID)
@@ -36,6 +36,9 @@
       function addQuestion()
       {
             $quizID = $this->input->post('quizID');
+						$quizName = $this->input->post('quizName');
+						$courseName = $this->input->post('courseName');
+
             $statement = $this->input->post('statement');
             $questionType = $this->input->post('group1');
             $option1 = $this->input->post('option1');
@@ -45,9 +48,9 @@
             $option5 = $this->input->post('option5');
             $key = $this->input->post('key');
             $this->dataload->addQuestion($statement, $questionType, $key, $option1, $option2, $option3, $option4, $option5, $quizID);
-            redirect('quiz/editQuiz/'.$quizID);
+            redirect('quiz/editQuiz/'.$quizID.'/quizName/'.$quizName.'/courseName/'.$courseName);
       }
-      
+
 	}
 
 ?>

@@ -42,7 +42,7 @@
     width: 100%;
     z-index: 2;
   }
-  
+
   thead {
     background-color: #505050;
     color: white;
@@ -52,14 +52,23 @@
     background-color: #FFFFFF;
 }
 
-
+.boxed
+{
+  border: 5px solid black ;
+  background-color: white;
+      color: #505050;
+      font-size: 120%;
+   padding-left: 20px;
+   padding-right: 20px;
+   margin-bottom: 20px;
+}
 </style>
 
 <body>
 <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>
 
-<main>  
+<main>
   <script>
     $(document).ready(function() {
       $('select').material_select();
@@ -90,36 +99,53 @@
 
  //  }
  //  };
-  </script>   
+  </script>
 
   <nav>
     <div class="nav-wrapper grey darken-3">
-      <a href="<?php echo base_url();?>">MyQuiz</a>
+      <a href="<?php echo base_url();?>" class="brand-logo">MyQuiz</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="<?php echo base_url();?>index.php/teacher/viewcourse">return</a></li>
+        <li><a href="#">Welcome <?php $teacherName = $this->uri->segment(9); $teacherName = urldecode($teacherName); echo $teacherName;?>!</a></li>
+        <li><a href="<?php echo base_url();?>index.php/teacher/viewcourse"><i class="material-icons">reply</i></a></li>
         <li><a class="modal-trigger" href="#modal1" onclick="serieName=this.dataset.serieName;document.querySelector('#modal1 input#name').value = serieName;return true;" data-serie-name="<?=$quizID ?>">Add Question</a></li>
       </ul>
   </nav>
 
+<div class="container">
+  <div class="row">
+
+    <h3><?php
+     $courseName = $this->uri->segment(7);
+     $courseName = urldecode($courseName);
+     echo $courseName;
+     ?>
+    </h3>
+  </div>
+  <div class="row">
+
+         <h5> Quiz <?php $quizID = $this->uri->segment(3);echo $quizID?>: <?php $quizName = $this->uri->segment(5);$quizName = urldecode($quizName); echo $quizName?></h3>
+
+  </div>
   <div class="row">
     <form class="col s12">
       <?php
-      foreach($questions as $q) {
+      foreach($questions as $key=>$q) {
       ?>
-        <div class="row"><?php echo $q->questionStatement?></div>
-        <?php 
+    <div class="boxed">
+        <div class="row">Q<?php echo ++$key ?>: <?php echo $q->questionStatement ?></div>
+        <?php
           if ($q->questionType==0){
         ?>
-        <div class="input-field col s12">
+        <div class="row">
           <select>
-            <option value="" disabled selected>True and Flase</option>
+            <option value="" disabled selected>True and False</option>
             <option value="1"><?php echo $q->option1 ?></option>
             <option value="2"><?php echo $q->option2 ?></option>
           </select>
           <label>Materialize Select</label>
-        </div> 
+        </div>
         <?php }else{ ?>
-        <div class="input-field col s12">
+        <div class="row">
           <select>
             <option value="" disabled selected>Multiple Choice</option>
             <option value="1"><?php echo $q->option1 ?></option>
@@ -129,16 +155,17 @@
             <option value="5"><?php echo $q->option5 ?></option>
           </select>
           <label>Materialize Select</label>
-        </div> 
+        </div>
         <?php } ?>
+      </div>
       <?php } ?>
     </form>
   </div>
-
+</div>
      <!-- Modal Structure -->
   <div id="modal1" class="modal">
   <?php
-  $hidden = array('quizID' => $quizID);
+  $hidden = array('quizID' => $quizID, 'quizName' => $quizName, 'courseName' => $courseName);
   echo form_open('quiz/addQuestion','', $hidden); ?>
   <div class="modal-content">
     <h4>Add Question</h4>
@@ -205,7 +232,7 @@
 
 </div>
 
- 
+
 </main>
 <!--<footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90" >-->
 <footer class="page-footer" style="background-color: darkgray; opacity:0.6;z-index: 90;margin-top:0px;" >
@@ -222,4 +249,3 @@
 
 
 </html>
-

@@ -61,16 +61,13 @@
 
 <header>
 
-<nav class="nav-wrapper grey darken-3 " role="navigation" style="opacity: 0.7" id="nav-bar">
-	<div class="nav-wrapper container">
-		<a id="logo-container" href="#" class="brand-logo">My Quiz</a>
-		<ul class="right hide-on-med-and-down">
-			<li><a href="#">Welcome <?php echo $teacher_username;?>!</a></li>
-			<li><a class="waves-effect modal-trigger" href="manageCourses.html">Manage courses</a></li>
- </ul>
-	</div>
-</nav>
-
+  <nav>
+    <div class="nav-wrapper grey darken-3">
+      <a href="<?php echo base_url();?>" class="brand-logo">MyQuiz</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#">Welcome <?php echo $teacher_username;?>!</a></li>
+      </ul>
+  </nav>
 
 </header>
 
@@ -105,16 +102,22 @@
 
       <ul class="collapsible" data-collapsible="accordion">
         <li>
-          <div class="collapsible-header"><i class="material-icons">filter_drama</i><?php echo $c->courseName;?>
+          <div class="collapsible-header"><?php echo $c->courseName;?>
             <a class="btn-floating btn-small waves-effect waves-light red modal-trigger" href="#modal1" onclick="serieName=this.dataset.serieName;document.querySelector('#modal1 input#name').value = serieName;return true;" data-serie-name="<?= $c->courseID ?>"><i class="material-icons">add</i></a>
           </div>
           <?php
             $cid = $c->courseID;
-            foreach($courseQuiz[$cid] as $quiz){
+            foreach($courseQuiz[$cid] as $key => $quiz){
           ?>
             <div class="collapsible-body">
-              <a href="<?php echo base_url();?>index.php/quiz/editQuiz/<?php echo $quiz->quizID;?>"><h5><?php echo $quiz->quizName?></h5></a>
-              <p><?php echo $quiz->Duration;?></p>
+              <ul class="collection">
+                 <li class="collection-item avatar">
+                    <i class="material-icons">mode_edit</i><span class="title">Quiz <?php echo ++$key ?>: <?php echo $quiz->quizName?></span>
+                        <p>Duration: <?php echo $quiz->Duration;?> minutes<br>
+                        </p>
+                        <a href="<?php echo base_url();?>index.php/quiz/editQuiz/<?php echo $quiz->quizID;?>/quizName/<?php echo $quiz->quizName;?>/courseName/<?php echo $c->courseName;?>/teacherName/<?php echo $teacher_username;?>" class="secondary-content"><i class="material-icons">send</i></a>
+                 </li>
+              </ul>
             </div>
           <?php }?>
         </li>
